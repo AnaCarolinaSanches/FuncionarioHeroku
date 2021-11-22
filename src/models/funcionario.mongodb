@@ -1,0 +1,46 @@
+use('LabBD');
+
+db.createCollection('funcionario', {
+  validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: ['nome', 'cargo', 'telefone', 'cpf', 'rg'],
+            properties: {
+                nome: {
+                    bsonType: 'string',
+                    description: 'Nome do funcionário é obrigatório'
+                },
+                cargo: {
+                    bsonType: 'string',
+                    description: 'o cargo é obrigatório'
+                },
+                telefone: {
+                    bsonType: 'string',
+                    description: 'O telefone é obrigatório'
+                },
+                cpf: {
+                    bsonType: 'string',
+                    description: 'O CPF é obrigatório'
+                },
+                rg: {
+                    bsonType: 'string',
+                    description: 'O RG é obrigatório'
+                }
+            }
+        }
+    }
+});
+
+db.funcionario.createIndex({cpf: 1},{unique:true})
+db.funcionario.createIndex({rg: 1},{unique:true})
+db.funcionario.find({},{})
+
+db.funcionario.insertOne(
+  {
+   "nome": "João",
+   "cargo": "Analista",
+   "telefone": "99999",
+   "cpf": "111.222.333-44",
+   "rg": "11.222.333-4"
+}
+)

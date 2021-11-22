@@ -1,0 +1,47 @@
+//Teste de Requisições REST - Funcionarios
+@baseURL = http://localhost:4000
+@id = 6196df6004e4719ca60c514f
+
+###
+// GET - Lista todos os funcionarios
+GET {{baseURL}}/funcionarios
+Content-Type: application/json
+
+###
+// GET - Lista apenas um funcionario pelo id
+GET {{baseURL}}/funcionarios/{{id}}
+Content-Type: application/json
+
+###
+// POST - Inclui um novo aluno
+POST {{baseURL}}/funcionarios
+Content-Type: application/json
+
+{
+   "nome": "Gabriel",
+   "cargo": "Gerente",
+   "telefone": "32615",
+   "cpf": "000.000.000-00",
+   "rg": "11.222.333-5"
+}
+
+### 
+// DELETE - Apaga um funcionario através do id informado
+DELETE {{baseURL}}/funcionarios/{{id}}
+Content-Type: application/json
+
+###
+// PUT - Altera um funcionario pelo ID
+PUT {{baseURL}}/funcionarios/
+Content-Type: application/json
+
+{
+   "_id": "61999bb21b32b8769ba10cab",
+   "nome": "Jorge",
+   "cargo": "Gerente",
+   "telefone": "000000",
+   "cpf": "000.000.000-00",
+   "rg": "12.234.455-5"
+}
+
+
